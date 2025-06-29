@@ -6,9 +6,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 use App\Enums\LinkType;
+use App\Models\User;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -19,8 +19,12 @@ return new class extends Migration
             $table->string('type')->default(LinkType::Text->value);
             $table->unsignedInteger('access_limit')->nullable();
             $table->unsignedInteger('access_count')->default(0);
-            $table->timestamp('expires_at')->nullable();
+            $table->date('expires_at')->nullable();
+            $table->boolean('public')->default(false);
+            $table->string('password')->nullable();
             $table->string('slug')->unique();
+            $table->longText('data')->nullable();
+            $table->foreignIdFor(User::class)->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

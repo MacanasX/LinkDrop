@@ -1,0 +1,41 @@
+# Node modules & PHP vendor
+node_modules
+vendor
+
+# Laravel cached files
+bootstrap/cache/*.php
+storage/*.key
+storage/*.log
+storage/*.txt
+storage/*.pid
+storage/framework/*
+storage/logs/*
+storage/debugbar/*
+storage/app/public # handled by symlink
+
+
+# Symlink (fixes your build error)
+public/storage
+
+# Git & system files
+.git
+.gitignore
+.env
+.env.*
+.DS_Store
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Frontend dev artifacts
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.vite
+dist
+
+# Docker
+docker-compose.override.yml
+Dockerfile*
+.dockerignore

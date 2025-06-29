@@ -2,7 +2,12 @@
 
 namespace App\Providers;
 
+
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Link;
+use App\Observers\LinkObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Link::observe(LinkObserver::class);
+        JsonResource::withoutWrapping();
     }
 }
