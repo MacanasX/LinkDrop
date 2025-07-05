@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use App\Http\Resources\Inertia\LinkHistory;
 
 class ProfileController extends Controller
 {
@@ -32,6 +33,7 @@ class ProfileController extends Controller
 
     public function profile(): \Inertia\Response
     {
-        return Inertia::render('Profile');
+        $linkHistory = request()->user()->linkHistory()->orderBy('created_at', 'desc')->paginate(10);
+        return Inertia::render('Profile', ['linkHistory' => LinkHistory::collection($linkHistory)]);
     }
 }

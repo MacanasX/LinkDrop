@@ -1,9 +1,9 @@
 import { SiteLayout } from '@/Layouts/SiteLayout.jsx';
 import { usePage } from '@inertiajs/react';
-import { Button } from '@/Components/Form/Button.jsx';
 import { DeleteAccount } from '@/Components/DeleteAccount.jsx';
+import { LinkHistory } from '@/Components/LinkHistory.jsx';
 
-export default function Profile() {
+export default function Profile({ linkHistory }) {
     const { user } = usePage().props;
 
     if (!user) {
@@ -15,8 +15,8 @@ export default function Profile() {
     }
 
     return (
-        <div className='min-h-screen flex flex-col items-center '>
-            <div className='p-8 m-4 w-full max-w-xl rounded-2xl flex flex-col gap-4 shadow-xl shadow-white/5  text-white   '>
+        <div className='min-h-screen flex flex-col items-center'>
+            <div className='p-8 m-4 w-full max-w-xl rounded-2xl flex flex-col gap-4 shadow-xl shadow-white/5  text-white'>
                 <h1 className='text-3xl font-bold'>Profile</h1>
 
                 <div className='flex justify-between'>
@@ -38,6 +38,7 @@ export default function Profile() {
                     <span className='text-gray-400'>Number of Links:</span>
                     <span>{user.numberOfLinks}</span>
                 </div>
+                <LinkHistory linkHistory={linkHistory} />
             </div>
             <DeleteAccount />
         </div>

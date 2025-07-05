@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Link::class);
     }
+
+    public function linkHistory(): HasMany
+    {
+        return $this->hasMany(UserLinkHistory::class);
+    }
 }
