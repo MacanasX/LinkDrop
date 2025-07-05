@@ -25,7 +25,7 @@ You’ll need to manually install dependencies, set up your `.env` file, run mig
 
 To get started, just run:
 
-    docker-compose up -d --build
+    docker compose up -d --build
 
 The app will be available at [http://localhost:8080](http://localhost:8080)
 
