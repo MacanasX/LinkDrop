@@ -1,5 +1,5 @@
 import { SiteLayout } from '@/Layouts/SiteLayout.jsx';
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { Pagination } from '@/Components/Pagination.jsx';
 
 export default function Spotlight({ links }) {
@@ -14,7 +14,13 @@ export default function Spotlight({ links }) {
 
                 {links?.data?.length === 0 ? (
                     <p className='text-center text-gray-500'>
-                        No links to show yet.
+                        No links to show yet.{' '}
+                        <Link
+                            className='text-blue-600 hover:text-white underline'
+                            href={'/'}
+                        >
+                            Be the first one.
+                        </Link>
                     </p>
                 ) : (
                     <div className='flex flex-col gap-4'>

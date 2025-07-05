@@ -10,4 +10,4 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 
-Schedule::job(CleanUpExpiredLinks::class)->everyMinute();//->dailyAt('12:00');
+Schedule::job(CleanUpExpiredLinks::class)->dailyAt('12:00');

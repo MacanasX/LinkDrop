@@ -2,6 +2,7 @@ import { router } from '@inertiajs/react';
 import clsx from 'clsx';
 
 export function Pagination({ meta }) {
+    if (meta?.last_page === 1) return null;
     const handleClick = (url) => {
         if (url) {
             router.get(url);
