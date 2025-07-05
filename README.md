@@ -58,4 +58,4 @@ docker compose up -d --build
 
 ## Note
 
-This project is a work in progress; the documentation and features may change.
+It's a personal project built for fun and to gain hands-on experience Dockerizing a full-stack app.
