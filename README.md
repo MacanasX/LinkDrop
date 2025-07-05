@@ -4,30 +4,57 @@
 
 # LinkDrop
 
-LinkDrop is a simple Laravel-based application that allows you to share media files or plain text easily. It’s a fun
-personal project where I experimented with Laravel and Docker.
+**LinkDrop** is a file and text sharing app built with **Laravel**, **React**, and **Inertia.js**.  
+The app is fully containerized with Docker and uses Nginx, Redis, MySQL, and Laravel's queue and scheduler.
 
-## Requirements
+---
 
-- Docker & Docker Compose installed (recommended)
+## ✨ Features
 
-### Or, if you prefer to run the app without Docker:
+- Upload & share text or media via unique links
+- Optional account registration
+- React + Inertia.js frontend with Laravel backend
+- Nginx as reverse proxy and static file server
+- Dockerized for easy setup and consistency
 
-- PHP 8.2 or higher
-- Composer
-- A supported database (MySQL, PostgreSQL, etc.)
-- Node.js and Yarn
+---
 
-You’ll need to manually install dependencies, set up your `.env` file, run migrations, and serve the app via
-`php artisan serve`.
+## ⚙️ Tech Stack
 
-## Getting Started
+- **Frontend**: React, Inertia.js, Vite, Tailwind CSS
+- **Backend**: Laravel 12 (PHP 8.4)
 
-To get started, just run:
+---
 
-    docker compose up -d --build
+## 🐳 Dockerized Architecture
 
-The app will be available at [http://localhost:8080](http://localhost:8080)
+This app runs with **6 containers**:
+
+| Container   | Purpose                                 |
+|-------------|-----------------------------------------|
+| `app`       | Laravel application (PHP-FPM)           |
+| `web`       | Serves the app via Nginx (port 8080)    |
+| `db`        | MySQL database                          |
+| `redis`     | Redis for queues + caching              |
+| `queue`     | Laravel queue worker                    |
+| `scheduler` | Laravel task scheduler                  |
+
+All services are orchestrated via `docker-compose`.
+
+---
+
+## 🚀 Getting Started (Docker)
+
+Clone the repo and run:
+
+```bash
+git clone https://github.com/yourusername/linkdrop.git
+cd linkdrop
+docker compose up -d --build
+```
+
+
+
 
 ## Note
 
