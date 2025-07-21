@@ -21,7 +21,7 @@ class FileHistory
     public function handle(MediaHasBeenAddedEvent $event): void
     {
 
-        if (!request()->user()->exists()) return;
+        if (!request()?->user()?->exists()) return;
         $media = $event->media;
         $link = $media->model;
 

@@ -6,7 +6,7 @@ services:
 
     db:
         image: mysql:8.3
-        container_name: mysql
+        container_name: linkdrop-mysql
         environment:
             MYSQL_DATABASE: link_drop
             MYSQL_USER: laravel_user
@@ -21,7 +21,7 @@ services:
 
     redis:
         image: redis:8-alpine
-        container_name: redis
+        container_name: linkdrop-redis
         ports:
             - "6379:6379"
         networks:
@@ -52,7 +52,7 @@ services:
         env_file: .env.docker
         environment:
             CONTAINER_ROLE: "queue-worker"
-        container_name: laravel-queue
+        container_name: linkdrop-queue
         command: [ "php", "artisan", "queue:work", "--sleep=3", "--tries=3" ]
         restart: unless-stopped
         stop_signal: SIGTERM
@@ -73,7 +73,7 @@ services:
         environment:
             CONTAINER_ROLE: "scheduler"
 
-        container_name: laravel-scheduler
+        container_name: linkdrop-scheduler
         command: [ "sh", "-c", "while true; do php artisan schedule:run --verbose --no-interaction; sleep 60; done" ]
         restart: unless-stopped
         networks:
@@ -81,7 +81,7 @@ services:
 
     web:
         image: nginx:alpine
-        container_name: nginx
+        container_name: linkdrop-nginx
         ports:
             - "8080:80"
         volumes:

@@ -6,7 +6,7 @@ echo "Container role: ${CONTAINER_ROLE}"
 if [ "$CONTAINER_ROLE" = "app" ]; then
     # Wait for DB
     echo "Waiting for MySQL to be ready..."
-    until nc -z -v -w30 mysql 3306
+    until nc -z -v -w30 db 3306
     do
         echo "Waiting for database connection..."
         sleep 1
