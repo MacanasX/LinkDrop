@@ -46,6 +46,8 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction --no-script
 # Copy Laravel app source
 COPY . .
 
+# Copy built frontend assets from the frontend build stage
+COPY --from=frontend-builder /frontend/public/build /var/www/html/public/build
 
 RUN mkdir -p storage/framework/cache storage/framework/views bootstrap/cache \
     && chown -R www-data:www-data storage bootstrap/cache \
@@ -53,8 +55,7 @@ RUN mkdir -p storage/framework/cache storage/framework/views bootstrap/cache \
     && chown -R www-data:www-data public \
     && chmod -R 775 public \
     && chown -R www-data:www-data public/build
-# ✅ Copy built frontend assets from the frontend build stage
-COPY --from=frontend-builder /frontend/public/build /var/www/html/public/build
+
 
 # Set proper permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
